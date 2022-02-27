@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div style="display: flex; justify-content: end; padding: 2% 2% 0% 0%; color: rgb(43, 39, 39);">
+    <h4 id="list-code">{{list.listId}}</h4>
+    <button type="button" class="btn btn-dark btn-sm" onclick="copyToClipboard('#list-code')" style="margin-left: 1%;">Copy</button>
+</div>
+
+<div class="mylist_shows-container">
+    {% for show in shows %}
+        <div class="list-item-container">
+            <img src={{show.image}} class="img-smaller" id="show-poster"/>
+            <div class="list-item-middle">
+                <b>{{show.title}}</b>
+                <br>
+                Year: {{show.year}}
+                <br>
+                Rating: {{show.imdbRating}}
+                <form action="{% url 'deletefromlist' %}" method="POST" class="remove-from-list">
+                    {% csrf_token %}
+                    <input type="hidden" name="show_to_delete" value="{{show.id}}">
+                    <br>
+                    <button type="submit" class="btn btn-outline-dark" class="delete-from-list-button">Remove</button>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

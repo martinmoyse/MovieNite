@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% if matches %}
+    <h3 style="padding: 2% 0 2% 0; text-align: center;">We found the following matches:</h3>
+    <div class="mylist_shows-container">
+    {% for show in matches %}
+    <div class="list-item-container">
+        <img src={{show.image}} class="img-smaller" id="show-poster"/>
+        <div class="list-item-middle">
+            <b>{{show.title}}</b>
+            <br>
+            Year: {{show.year}}
+            <br>
+            Rating: {{show.imdbRating}}
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+{% else %}
+
+
+<div id="match-form-container">
+    <br>
+    <h2>Let's find you matches..</h2>
+    <br>
+    <form action="{% url 'match' %}" method="POST">
+        {% csrf_token %}
+        <input class="form-control form-control-lg" type="text" name="list-code" placeholder="List code">
+        <button type="submit" class="btn btn-dark" style="width: 100%; margin-top: 1%">Find matches</button>
+    </form>
+</div>
+
+{% endif %}
+
+
+{% endblock %}

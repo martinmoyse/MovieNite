@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@1,900&display=swap');
+
+header {
+  height: 200vh;
+}
+
+.container {
+  /* hide fixed overflow contents */
+  clip: rect(0, auto, auto, 0);
+
+  /* does not work if overflow = visible */
+  overflow: hidden;
+
+  /* only works with absolute positioning */
+  position: absolute;
+
+  /* Make sure containers are full-width and height */
+  height: 100vh;
+  left: 0;
+  width: 100%;
+
+  /* safari hack */
+  -webkit-mask-image: -webkit-linear-gradient(top, #ffffff 0%,#ffffff 100%);
+}
+
+.container_solid {
+  /* background: #fb8313; */
+  background: #d39459;
+  
+  /* position this container at the top of its parent element */
+  top: 0;
+}
+
+.title_wrapper {
+  position: fixed;
+  display: block;  
+  margin: auto;
+  width: 100%;
+  /* center the text wrapper vertically */
+  top: 40%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.title_wrapper h1 {
+  text-align: center;
+  font-size: 132px;
+  margin: 0;
+  /* text-transform: uppercase; */
+  text-align: center;
+  /* font-family: 'Fraunces', serif; */
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: 'Bebas Neue', cursive;
+  /* font-weight: 900; */
+}
+
+.container_solid .title_wrapper h1 {
+  /* the text background */
+  background: url(https://miro.medium.com/max/4000/1*1u7spcxNbnJXeqXjEmJ38A.jpeg);
+  background-size: 100vw auto;
+  background-position: center;
+  
+  /* clip the text is possible */
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  
+  
+  /* fallback text color */
+  color: black;
+}
+
+.container_image {
+  /* Grab a free image from unsplash */
+  background-image: url(https://miro.medium.com/max/4000/1*1u7spcxNbnJXeqXjEmJ38A.jpeg);
+  background-size:100vw auto;
+  background-position: center;
+  background-attachment: fixed;
+  /* background-repeat: no-repeat; */
+  
+  /* position the second container below the first container */
+  top: 100vh;
+}
+
+.container_image .title_wrapper h1 {
+  color: #d39459;
+}
+
+
+.button {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.75em 2.25em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+/**************************************************************************/
+
+h2::before { 
+    transform: scaleX(0);
+    transform-origin: bottom right;
+  }
+  
+  h2:hover::before {
+    transform: scaleX(1.3);
+    transform-origin: bottom left;
+  }
+  
+  h2::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    inset: 0 0 0 0;
+     background: #f2dfc1; 
+    z-index: -1;
+    transition: transform .3s ease;
+  }
+  
+  h2 a, .button a{
+      text-decoration: none;
+      color: inherit;
+  }
+
+  h2 {
+    position: relative;
+    font-size: 1.5rem;
+  }
+
+  #el1 h2 a, #el3 h2 a{
+    border: 2.5px dotted rgb(3, 3, 94);
+  }
+
+  #el2 h2 {
+    border: 2.5px dotted rgb(3, 3, 94);
+  }
+
+  html {
+    block-size: 100%;
+    inline-size: 100%;
+  }
+  
+  body {
+    min-block-size: 100%;
+    min-inline-size: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    display: grid;
+    place-content: center;
+    font-family: system-ui, sans-serif;
+  }
+  
+  @media (orientation: landscape) {
+    body {
+      grid-auto-flow: column;
+    }
+  }
+
+/**************************************************************************/
+
+  .container-preview{
+      display: flex;
+      width: 80%;
+      margin: auto;
+      justify-content: space-evenly;
+  }
+
+  .container-preview h2{
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Anton', sans-serif;
+  }
+
+  .container-preview-element{
+    height: 150px;
+    width: 100px;
+  }
+
+  #el2{
+    margin-top: 3%;
+  }
+
+.button-div{
+    height: 0.75em;
+    width:  0.75em 2.25em;
+    text-align: center;
+    color: black;
+}
+
+@media (min-width: 768px) {
+    .button {
+      padding: 1.125em 3.375em;
+    }
+
+    .button-div{
+      color: white;
+    }
+
+    .title_wrapper h1{
+        font-size: 172px;
+    }
+
+    .container-preview-element{
+        height: 175px;
+        width: 125px;
+      }
+
+    .container-preview-element h2{
+        font-size: 2.3rem;
+    }
+
+    .container-preview-element p{
+        font-size: 1.3rem;
+    }
+  }
+
+@media (min-width: 1024px) {
+    .button {
+      padding: 1.25em 3.55em;
+    }
+
+    .button-div{
+      color: white;
+    }
+
+    .title_wrapper h1{
+        font-size: 196px;
+    }
+
+    .container-preview-element{
+        height: 175px;
+        width: 125px;
+      }
+
+    .container-preview-element h2{
+        font-size: 2.5rem;
+    }
+
+    .container-preview-element p{
+        font-size: 1.4rem;
+    }
+  }

@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="{% static 'index.css' %}" rel="stylesheet">
+        <script src="{% static 'index.js' %}"></script>
+    </head>
+
+    <body>
+
+        
+        
+        <header>
+            <!-- First container -->
+            <div class="container container_solid">
+              <div class="title_wrapper">
+                <h1>Movie Nite</h1>
+                
+                <div class="container-preview">
+                    <div class="container-preview-element" id="el1">
+                        <h2><a href="{% url 'explore' %}">Explore</a></h2>
+                        <p>Search shows by title or filter by our multiple criteria.</p>
+                    </div>
+    
+                    <div class="container-preview-element" id="el2">
+                        <h2><a href="{% url 'mylist' %}">Add to list</a></h2>
+                        <p>Create your own list of favorite shows.</p>
+                    </div>
+
+                    <div class="container-preview-element" id="el3">
+                        <h2><a href="{% url 'match' %}">Match</a></h2>
+                        <p>Compare your list to other user's list and find show matches.</p>
+                    </div>
+                </div>
+                
+                <div class="button-div">
+                </div>
+            
+              </div>
+            </div>
+          
+            <!-- Second container -->
+            <div class="container container_image" aria-hidden="true">
+              <div class="title_wrapper">
+                <h1>Movie Nite</h1>
+                <div class="container-preview">
+                    <div class="container-preview-element"></div>
+                    <div class="container-preview-element" id="el2"></div>
+                    <div class="container-preview-element"></div>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="button-div">
+                  <h3>Welcome back.</h3>
+                  <button class="button" role="button"><a href="{% url 'logout' %}">Logout</a></button>
+                </div>
+                {% else %}
+                <div class="button-div">
+                    <button class="button" role="button"><a href="{% url 'register' %}">Create an account</a></button>
+                    <h4>Already have an account? <a href="{% url 'login' %}">Sign in.</a></h4>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          
+          </header>
+        
+    </body>
+</html>

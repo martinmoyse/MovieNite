@@ -1,0 +1,95 @@
+{% extends "layout.html" %} {% block body %}
+
+<div class="backend-data">
+    {% if index %}
+      <input type="hidden" id="_i" value="{{index}}">
+      <input type="hidden" id="_c" value="{{category}}">
+    {% else %}
+      <input type="hidden" id="_i" value="">
+      <input type="hidden" id="_c" value="">
+    {% endif %}
+</div>
+
+<div class="explore-filter-container">
+  <div>
+
+    <div class="resize-form">
+      <form id="search-by-title-form" action="javascript:searchByTitle()"  method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="col-9">
+            <input type="text" class="form-control" placeholder="Title" id="title">
+          </div>
+          <div class="col-3">
+            <input type="text" class="form-control" placeholder="Year" id="year"> 
+          </div>
+        </div>
+        <div class="responsive-button">
+          <button type="submit" class="btn btn-info">Search by title</button>
+        </div>
+        <input type="hidden" id="i2" name="index" value="">
+        <input type="hidden" id="categ2" name="category" value="">
+      </form>
+    </div>
+    <div id="show-not-found"><h2>Show not found.</h2></div>
+  </div>
+
+  <div>
+    <a href="javascript:loadNewCategory('/static/top250m.json')" class="button1">Top 250 Movies</a>
+    <a href="javascript:loadNewCategory('/static/top250s.json')" class="button1">Top 250 Series</a>
+    <a href="javascript:loadNewCategory('/static/hottestMovies.json')" class="button1">Hottest Movies</a>
+    <a href="javascript:loadNewCategory('/static/hottestSeries.json')" class="button1">Hottest Series</a>
+  </div>
+
+</div>
+
+
+<br>
+<br>
+
+
+  <div class="hero-container">
+
+		<div class="main-container" id="show-display-container">
+			<div class="poster-container">
+				<a href="#">
+          <img src="" class="poster" id="show-poster"/>
+        </a>
+			</div>
+			<div class="show-container">
+				<div class="show__content">
+					<h5 class="show__title" id="show-title"></h5>
+          <p class="show__details-small" id="show-year"></p>
+          <p class="show__rating" id="show-rating"></p>
+          <p class="show__details-small" id="show-rank"></p>
+					
+					<form id="add-to-list-form" action="{% url 'explore' %}" method="POST">
+            {% csrf_token %}
+            <button class="show__add-to-list">Add to list</button>
+            <input type="hidden" id="tt" name="id" value="">
+            <input type="hidden" id="t" name="title" value="">
+            <input type="hidden" id="y" name="year" value="">
+            <input type="hidden" id="rt" name="rating" value="">
+            <input type="hidden" id="im" name="image" value="">
+            <input type="hidden" id="i" name="index" value="">
+            <input type="hidden" id="categ" name="category" value="">
+            {% if list %}
+              <input type="hidden" name="listid" value="{{list.listId}}">
+            {% endif %}
+          </form>
+				</div>
+			</div>
+		</div>
+    <div class="buttons-container">
+      <a class="carousel-control-prev" href="javascript:updateIndex(-1)" role="button">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="javascript:updateIndex(+1)" role="button">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+	</div>
+
+
+
+{% endblock %}
